@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get("/list/{website}", function($website){
     $setMenus = DB::table("user_set_menu")->orderBy("id")->where("website",$website)->get();
     return response()->json($setMenus);
