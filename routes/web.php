@@ -2,16 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\UserSetMenu;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::prefix('pay')->group(function () {
+    Route::get('alipay', [\App\Http\Controllers\PayController::class,'index']);
+    Route::get('return', [\App\Http\Controllers\PayController::class,'return']);
+    Route::get('notify', [\App\Http\Controllers\PayController::class,'notify']);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
