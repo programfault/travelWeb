@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\UserSetMenu;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::get("/list/{website}", function($website){
     $setMenus = DB::table("user_set_menu")->orderBy("id")->where("website",$website)->get();
     return response()->json($setMenus);
+});
+
+Route::get("/details/{menu}", function(UserSetMenu $menu){
+    return response()->json($menu);
 });
 
 Route::get("/config/{website}", function($website){
