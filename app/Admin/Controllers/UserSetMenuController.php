@@ -28,10 +28,10 @@ class UserSetMenuController extends AdminController
             $grid->column('website');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
+
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
-        
+
             });
         });
     }
@@ -69,13 +69,13 @@ class UserSetMenuController extends AdminController
         return Form::make(new UserSetMenu(), function (Form $form) {
             $form->display('id');
             $form->text('title');
-            $form->text('orignal_price');
-            $form->text('current_price');
-            $form->text('child_price');
-            $form->text('description');
-            $form->text('amount');
+            $form->currency('orignal_price')->symbol('￥');
+            $form->currency('current_price')->symbol('￥');
+            $form->currency('child_price')->symbol('￥');
+            $form->editor('description')->languageUrl(url('TinyMCE/langs/de.js'));
+            $form->number('amount');
             $form->text('website');
-        
+
             $form->display('created_at');
             $form->display('updated_at');
         });
